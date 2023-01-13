@@ -1,6 +1,6 @@
 import pytest
 import json
-import pandas
+import pandas as pd
 
 
 @pytest.fixture
@@ -13,5 +13,5 @@ def test_comments(comments):
 
 
 def test_generate_df(comments):
-    expected_df = pandas.read_excel('tests/expected_worksheet.ods')
+    expected_df = pd.read_excel('tests/expected_worksheet.ods')
     assert generate_df(comments) == expected_df
