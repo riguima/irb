@@ -1,6 +1,7 @@
 import pytest
 import json
 import pandas as pd
+from irb.main import get_comments_from_post
 
 
 @pytest.fixture
@@ -9,7 +10,7 @@ def comments():
 
 
 def test_comments(comments):
-    assert comments[:20] == json.load('tests/expected_comments.json')
+    assert comments[:20] == json.load(open('tests/expected_comments.json', 'r'))
 
 
 def test_generate_df(comments):
