@@ -1,8 +1,10 @@
 from dotenv import load_dotenv
+import os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
 
 def get_comments_from_post(post):
@@ -24,3 +26,7 @@ def create_browser():
 
 def make_login(browser):
     browser.get('https://www.instagram.com/')
+    browser.find_element(By.CSS_SELECTOR, 'input[name=username]').send_keys(os.getenv('USERNAME'))
+    password_input = browser.find_element(By.CSS_SELECTOR, 'input[name=password]')
+    password_input.send_keys(os.getenv('PASSWORD'))
+    password_input.submit()
