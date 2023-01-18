@@ -4,6 +4,7 @@ from main import get_comments_from_post, generate_df
 
 
 if __name__ == '__main__':
+    sg.theme('DarkAmber')
     layout = [
         [sg.Text('Código do post'), sg.InputText(key='post_code')],
         [sg.Text('Pasta para download'), sg.Input(key='folder'),
