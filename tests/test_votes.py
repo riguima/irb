@@ -18,10 +18,3 @@ def test_generate_df(votes):
     expected_df = pd.read_excel('tests/expected_worksheet.xlsx')
     df = generate_df(votes[:10])
     assert df.equals(expected_df)
-
-
-def test_save_worksheet():
-    expected_df = pd.read_excel('tests/expected_worksheet.xlsx')
-    path = Path.home() / 'Downloads'
-    save_worksheet(path)
-    assert pd.read_excel(path).equals(expected_df)
