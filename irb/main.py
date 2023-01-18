@@ -2,9 +2,10 @@ from dotenv import load_dotenv
 import os
 import instaloader
 import re
+import pandas as pd
 
 
-def get_comments_from_post(shortcode):
+def get_votes_from_post(shortcode):
     load_dotenv('.env')
     L = instaloader.Instaloader()
     L.login(os.getenv('USERNAME'), os.getenv('PASSWORD'))
@@ -21,4 +22,9 @@ def get_comments_from_post(shortcode):
 
 
 def generate_df(comments):
-    pass
+    companies = [c['vote'] for c in comments]
+    unique_companies = list(dict.fromkeys([c['vote'] for c in comments]))
+    df =  pd.DataFrame({'Empresa': unique_companies,
+                        'Votos': [companies.count(c) for c in unique_companies]})
+    df = df.sort_values('Votos', ascending=False)
+    return df.reset_index(drop=True)
