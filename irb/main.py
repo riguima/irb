@@ -22,8 +22,8 @@ def get_votes_from_post(shortcode):
 
 
 def generate_df(comments):
-    companies = [c['vote'] for c in comments]
-    unique_companies = list(dict.fromkeys([c['vote'] for c in comments]))
-    df =  pd.DataFrame({'Empresa': unique_companies,
-                        'Votos': [companies.count(c) for c in unique_companies]})
+    profiles = [c['vote'] for c in comments]
+    unique_profiles = list(dict.fromkeys([c['vote'] for c in comments]))
+    df =  pd.DataFrame({'Perfis': unique_profiles,
+                        'Votos': [profiles.count(c) for c in unique_profiles]})
     return df.sort_values('Votos', ascending=False)
