@@ -26,5 +26,4 @@ def generate_df(comments):
     unique_companies = list(dict.fromkeys([c['vote'] for c in comments]))
     df =  pd.DataFrame({'Empresa': unique_companies,
                         'Votos': [companies.count(c) for c in unique_companies]})
-    df = df.sort_values('Votos', ascending=False)
-    return df.reset_index(drop=True)
+    return df.sort_values('Votos', ascending=False)

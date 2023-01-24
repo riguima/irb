@@ -1,7 +1,7 @@
 import pytest
 import json
 import pandas as pd
-from irb.main import get_votes_from_post, generate_df, save_worksheet
+from irb.main import get_votes_from_post, generate_df
 from pathlib import Path
 
 
